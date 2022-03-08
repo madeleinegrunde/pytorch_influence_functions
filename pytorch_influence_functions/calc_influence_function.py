@@ -272,7 +272,7 @@ def calc_influence_function(train_dataset_size, grad_z_vecs=None,
         influences.append(tmp_influence)
         display_progress("Calc. influence function: ", i, train_dataset_size)
 
-    harmful = np.argsort(influences)
+    harmful = np.argsort(influences.cpu())
     helpful = harmful[::-1]
 
     return influences, harmful.tolist(), helpful.tolist()
@@ -343,7 +343,9 @@ def calc_influence_single(model, train_loader, test_loader, test_id_num, gpu,
         influences.append(tmp_influence)
         display_progress("Calc. influence function: ", i, train_dataset_size)
 
-    harmful = np.argsort(influences)
+    print('Type of influences: ', type(influences))
+    print('Type of influences.cupu()', type(influences.cpu()))
+    harmful = np.argsort(influences.cpu())
     helpful = harmful[::-1]
 
     return influences, harmful.tolist(), helpful.tolist(), test_id_num

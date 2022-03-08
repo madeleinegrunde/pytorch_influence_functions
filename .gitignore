@@ -1,5 +1,6 @@
 *.pyc
 outdir/*
+examples/outdir/*
 data/*
 __pycache__/
 build/
@@ -13,3 +14,5 @@ pytorch_influence_functions.egg-info/
 pyvenv.cfg
 .vscode/
 .idea/
+*.gz
+examples/data/cifar-10-batches-py/*
